@@ -45,7 +45,7 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: zhaotaiblog
+# disqus_username: zhaotaiblog
 
 # Duoshuo settings
 duoshuo_username: zhaotai
@@ -59,8 +59,8 @@ duoshuo_share: true                     # set to false if you want to use Commen
 # Baidu Analytics
 ba_track_id: 09ede19623d05f4a641af834ea5c455d
 # Google Analytics
-ga_track_id: 'UA-73396712-1'            # Format: UA-xxxxxx-xx
-ga_domain: zhaotai.me
+# ga_track_id: 'UA-73396712-1'            # Format: UA-xxxxxx-xx
+# ga_domain: zhaotai.me
 
 
 
