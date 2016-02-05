@@ -17,10 +17,10 @@ tags:
 2. [框架和插件](#section-2)
 3. [配置和安装](#section-3)
 4. [补充](#section-4)
-  1) [分页问题](#section-5)
-  2) [调试和生产的一致性问题](#section-6)
-  3) [gem仓库问题](#gem)
-  4) [多点/DISPUS的short name究竟是什么鬼](#dispusshort-name)
+* [分页问题](#section-5)
+* [调试和生产的一致性问题](#section-6)
+* [gem仓库问题](#gem)
+* [多点/DISPUS的short name究竟是什么鬼](#dispusshort-name)
 5. [后续](#section-7)
 
 ## 引用资源版权声明
