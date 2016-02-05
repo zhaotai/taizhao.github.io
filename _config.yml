@@ -1,21 +1,85 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+title: Terry Blog
+SEOTitle: 赵泰的博客 | Terry Blog
+header-img: img/home-bg.jpg
+email: zhaotai5541@gmail.com
+description: "这是一个前端开发工程师的个人博客，记录着他的生活和一些技术。"
+keyword: "blog,frontend,developer,program,jekyll,github pages,博客,前端,开发,互联网"
+url: "http://zhaotai.me"              # your host, for absolute URL
+baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+
+
+
+# SNS settings
+RSS: false
+#weibo_username:     zhaotai
+zhihu_username:     zhao-tai-80-23
+github_username:    zhaotai
+twitter_username:  zhaotai5541
+facebook_username:  TerryZhaoTai
+
+
 
 # Build settings
+highlighter: pygments
+permalink: pretty
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+#pagination
+gems: [jekyll-paginate]
+paginate: 5
+paginate_path: "/page:num/"
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
 markdown: kramdown
+kramdown:
+  input: GFM                            # use Github Flavored Markdown !important
+
+
+
+# Disqus settings
+disqus_username: zhaotaiblog
+
+# Duoshuo settings
+duoshuo_username: zhaotai
+# Share component is depend on Comment so we can NOT use share only.
+duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
+
+
+
+# Analytics settings
+# Baidu Analytics
+ba_track_id: 09ede19623d05f4a641af834ea5c455d
+# Google Analytics
+ga_track_id: 'UA-73396712-1'            # Format: UA-xxxxxx-xx
+ga_domain: zhaotai.me
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "爱代码，爱科学，爱思考。\n爱旅行，爱创造，爱尝鲜。\n世界那么大，总要去看看。"
+sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 0              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Friends
+friends: [
+    # {
+    #     title: "Foo",
+    #     href: "#"
+    # }
+]

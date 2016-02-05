@@ -1,0 +1,134 @@
+---
+layout:     post
+title:      "如何基于github pages和jekyll搭建一个blog"
+subtitle:   " \"Hello World, Hello Blog\""
+date:       2016-02-04 18:00:00 +0800
+author:     "Terry"
+header-img: "img/post-bg-2015.jpg"
+tags:
+    - Blog
+    - Github Pages
+    - Jekyll
+---
+
+## 目录
+
+1. [引用资源版权声明](#section-1)
+2. [框架和插件](#section-2)
+3. [配置和安装](#section-3)
+4. [补充](#section-4)
+  1) [分页问题](#section-5)
+  2) [调试和生产的一致性问题](#section-6)
+  3) [gem仓库问题](#gem)
+  4) [多点/DISPUS的short name究竟是什么鬼](#dispusshort-name)
+5. [后续](#section-7)
+
+## 引用资源版权声明
+
+早有做一个自己的Blog的想法，但一直没实践，花了一整天，终于搞定了。
+
+* 本blog由[jekyll](https://jekyllrb.com/)博客生成器构建, 同时挂载在[github pages](https://pages.github.com/)服务上。
+* 主题用的是[Hux的blog主题](https://github.com/Huxpro/huxpro.github.io)，已star表感谢。
+* 首页的大图来自flikr作者[Kent MacDonald](https://www.flickr.com/photos/67617854@N04/)，已发邮件得到许可，在此表示感谢。
+* 其余图片均为模板自带和自己拍摄。
+
+身为一个互联网行业从业者，在从开源社区中收益的同时，也深知盗版和抄袭的危害，无法改变国内乱象，先从自己开始吧。
+
+**如果您发现本网站的任何资源有任何版权问题，如不小心引用了盗版图片等，希望您告知，笔者会及时改正。**
+
+本着尊重开源贡献者的态度，在此说明。
+
+---
+
+## 框架和插件
+
+接下来说说搭建这个博客的技术细节。  
+
+博客采用 [GitHub Pages](https://pages.github.com/) + [Jekyll](http://jekyllrb.com/) 快速 Building Blog 的技术方案。
+
+其优点非常明显：
+
+* 轻松建站，部署在github上，无需自己料理服务器，如果需要用到后端API可以去找Baas的服务如leancloud之类，可最小化投入成本；
+* 博客内容基于markdown编写，告别word一样丑陋又繁琐的text editor
+* 基于git的工作流，commit即为发布，对developer们非常友好，非developer们可以稍微学下git，也能应付
+* 有主题gallery库：[jekyllthemes.org](http://jekyllthemes.org/)，[jekyllthemes.io](http://jekyllthemes.io/)，想要自定义也很容易，毕竟就是个Html嘛
+* 模板语言简洁明快，文档也较齐全，学习起来非常容易
+
+github在国内的访问可能会稍稍慢，可以考虑将比较占用http的资源，如图片，css，js等静态资源放到CDN上，如[七牛](http://www.qiniu.com)。
+
+评论可以使用第三方社会化评论系统，如国外的[disqus](https://disqus.com/)，或者国内的[多说](http://duoshuo.com/)，[友言](http://uyan.cc/)，[贝米](http://baye.me/)等。目前笔者用的是disqus+多说，以后根据使用情况再做调整。
+
+---
+
+## 配置和安装
+
+1.注册一个自己喜欢的域名，有很多域名服务商，建议选择知名的大型的，小型的服务商经常瞎搞，你的域名很容易会被劫持，然后链到垃圾网站。
+
+2.如果对网速要求不是那么高，建议直接选择国外顶级域名服务商[goDaddy](https://www.godaddy.com/)，一步一步跟着教程走即可。笔者实际使用感觉还好，并没有明显延迟。
+
+3.然后安装[Jekyll](http://jekyllrb.com/)。
+
+4.好了现在选一个自己喜欢的主题吧，当然你也可以自己做一个，就是普通的html，自己可以任意搞。
+
+* [jekyllthemes.org](http://jekyllthemes.org/)
+* [jekyllthemes.io](http://jekyllthemes.io/)
+
+5.假设你喜欢我这个主题，可以参见[hux的jekyll blog theme项目](https://github.com/Huxpro/huxpro.github.io)。他才是原创哦。
+
+6.好了接下来你需要把他们发布到线上，并且和你的域名绑定到一起，请参考这个链接[About custom domains for Github Pages sites](https://help.github.com/articles/about-custom-domains-for-github-pages-sites/)。
+
+>
+如果你有一个网站，想挂到二级域名，形如 blog.xxx.com，那么你应该参考 Subdomains；
+如果你希望这个挂到你的一级域名上，形如 xxx.com（无www切记），那么你应该参考 Apex domain；
+
+7.好了，完成！在这个过程中，可能不同的操作系统，不同的ruby版本，不同的jekyll版本，不同的网络环境，都会引起或多或少的差异和问题，遇到问题，多google，切记别用百度，如果你还想找到答案。
+
+## 补充
+
+上面的给出的链接都是官方的，但jekyll还在更新，笔者踩了一些小坑，因此在这里做一点点补充。
+
+#### 分页问题
+
+jekyll升级了3.0版本，但这个Blog theme还是3.0之前的版本，因此分页浏览功能会有一点小小的问题。
+
+jekyll paginate在3.0中被抽出来做成了gem的一个组件，而不会再与jekyll打包在一起了，因此如果我们要分页，需要额外安装它并且配置它。
+
+具体做法就是在命令行敲击`gem install jekyll-paginate`，如果没有安装gem的环境请先安装gem的环境，并且安装jekyll，安装方法参加[jekyll官网](http://jekyllrb.com/)；
+
+然后在项目工程根目录下找到`_config.yml`，并且加入以下代码
+
+    #pagination
+    gems: [jekyll-paginate]
+    paginate: 5
+    paginate_path: "/page:num/"
+
+其中，#代表注释，gems代表要用的插件，paginate代表每页的文章数，paginate_path代表分页的url path，更多详情参见[jekyll关于pagination的文档](http://jekyllrb.com/docs/pagination/)；
+
+#### 调试和生产的一致性问题
+
+该项目旨在为使用jekyll托管在github pages平台上的用户提供一致的markdown解析环境。
+建议安装，以保证本地预览和线上发布的一致性。
+详情请访问以下网站：
+
+* [Using jekyll with pages](https://help.github.com/articles/using-jekyll-with-pages/)
+* [pages-gem github repo](https://github.com/github/pages-gem)
+
+#### gem仓库问题
+
+gem的仓库由于被墙了时好时不好，可能会报网络错误。笔者在第一次安装jekyll时很顺利，但到了安装jekyll-paginate时便报网络错误。
+建议使用淘宝的镜像仓库，具体方法参见[淘宝ruby镜像首页](https://ruby.taobao.org/)，so easy，妈妈再也不用担心我的学习。
+By the way，npm仓库同理。
+
+#### 多点/DISPUS的short name究竟是什么鬼
+
+这些第三方社会化评论插件，都会要求你登录后绑定你的网站，绑定你网站的同时，会要求你注册一个二级域名形如`abcd.dispus.com`，此时`abcd`即为你的short name，在`_config.yml`中写的也是这个short name。
+
+而这个注册二级域名的页面都很难找，并且有的还会链到404页面。算是一个坑吧，建议google`register site`，`short name`之类。
+
+这里仅给出[dispus的注册网址](https://disqus.com/admin/create/)。
+
+## 后续
+
+本文写的比较细，如果是老司机，估计会觉得笔者说了一堆废话，如果有什么不对或者尚待改进的地方还请见谅，如果能告诉我那就太感谢了。
+
+如果是新司机，笔者建议以看为辅，以动手为主，毕竟各个框架插件都在不断更新，这也是笔者没有把他们官网教程拿来复制粘贴或者翻译一遍的原因，链接总能指到最新版。当然如果觉得还是有问题，你可以选择给我留言，也可以选择给我发邮件，我在看到后一定会第一时间回复的。如果能带来一些建议和意见，那就更好啦！么么哒~~~
