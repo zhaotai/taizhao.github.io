@@ -4,7 +4,7 @@ title:      "如何基于github pages和jekyll搭建一个blog"
 subtitle:   " \"Hello World, Hello Blog\""
 date:       2016-02-04 18:00:00 +0800
 author:     "Terry"
-header-img: "img/post-bg-2015.jpg"
+header-img: "http://7xqrig.com1.z0.glb.clouddn.com/img/post-bg-2015.jpg"
 tags:
     - Blog
     - Github Pages
